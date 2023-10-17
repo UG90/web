@@ -59,13 +59,17 @@
     <script>
         function verifyPassword() {
             var enteredPassword = document.getElementById("password").value;
-            var correctPasswords = ["brighton123", "password2", "password3"]; // Replace with your actual passwords
-            var resultDiv = document.getElementById("result");
+            var passwordPageMap = {
+                "aaryan123": "aaryan.html",
+                "password2": "page2.html",
+                "password3": "page3.html"
+            };
 
-            if (correctPasswords.includes(enteredPassword)) {
+            var resultDiv = document.getElementById("result");
+            if (enteredPassword in passwordPageMap) {
                 resultDiv.innerHTML = "Password is correct. Redirecting...";
                 setTimeout(function() {
-                    window.location.href = "welcome.html"; // Replace with the URL of the destination page
+                    window.location.href = passwordPageMap[enteredPassword];
                 }, 2000); // Redirect after a 2-second delay (adjust as needed)
             } else {
                 resultDiv.innerHTML = "Password is incorrect. Try again.";
